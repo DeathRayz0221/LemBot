@@ -1,4 +1,4 @@
-# potential-octo-tribble
-
-Welcome to the #computer_programming channel!
 # LemBot
+
+Refer to the Lembot-git text channel for changes
+
