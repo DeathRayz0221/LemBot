@@ -1,9 +1,16 @@
 {
-  "name": "nodejs-console-app1",
-  "version": "0.0.0",
-  "description": "NodejsConsoleApp1",
+  "name": "discord-lem-bot",
+  "version": "1.0.0",
+  "description": "",
   "main": "app.js",
+  "scripts": {
+      "test": "lem bot.js"
+  },
   "author": {
     "name": "Edison Guillermo"
+  },
+  "license": "Ed Corp",
+  "dependencies": {
+    "discordie": "^0.5.5"
   }
 }
