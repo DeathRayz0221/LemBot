@@ -3,12 +3,16 @@ var Discord = require('discord.js');
 
 const Events = Discord.Events;
 const client = new Discord.Client();
+loga = "Mjk1NzUwNzIzMTE3OTA3OTY4";
+logb = ".C7oW3Q";
+logc = ".zNvmGRRMkK6WffH2VyAdAFTwenU";
+
 
 //Insert functions here 
 function commandIs(str, msg) {
     return msg.content.startsWith("~" + str)
 }
-client.login('Mjk1NzUwNzIzMTE3OTA3OTY4.C7oW3Q.zNvmGRRMkK6WffH2VyAdAFTwenU');
+client.login(loga+logb+logc);
 
 function pluck(array) {
     return array.map(function (item) { return item["name"]; });
