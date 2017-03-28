@@ -30,14 +30,15 @@ function hasRole(mem, role) {
 //Console
 client.on('ready', e => {
     console.log('Connected :)');
+    client.user.setGame("Type ~help for info")
 });
 
 //Bot commands
-var comms = ["teemo", "fuck", "roll", "lmgtfy","join","leave"];
+var comms = ["teemo", "fuck", "roll", "lmgtfy","join","leave","play"];
 
 client.on('message', message => {
     var args = message.content.split(" ")
-    const channel = message.member.voiceChannel;
+    
     if (commandIs("help", message)) {
         message.author.sendMessage("Please refer to https://github.com/DeathRayz0221/LemBot for help");
     }
@@ -48,15 +49,19 @@ client.on('message', message => {
         }
         message.channel.sendMessage(result);
     }
+    //Teemo
     if (commandIs(comms[0], message)) {
         message.channel.sendMessage("Want shrooms, " + message.author.username + "?");
     }
+    //Fuck
     if (commandIs(comms[1],message)) {
         message.channel.sendMessage("Dear " + message.author.username + '\n Fuck you in the ass :)');
     }
+    //Roll
     if (commandIs(comms[2], message)) {
         message.channel.sendMessage("!role");
     }
+    //LMGTFY
     if (commandIs(comms[3], message)) {
         if (args.length === 1) {
             message.reply("LMGTFY. Add more words after ~lmgtfy for me to \"google\" it for you");
@@ -72,13 +77,34 @@ client.on('message', message => {
             message.reply(newString);
         }
     }
+
+    //Music
+    const channel = message.member.voiceChannel;
     if (commandIs(comms[4], message)) {
-        channel.join();
+        if (channel != null) {
+            channel.join().then(connection => console.log("Connected to voice!"));
+        }
+        else {
+            message.reply("Please join a voice channel!");
+        }
     }
     if (commandIs(comms[5], message)) {
         channel.leave();
     }
 
+    //Play Teemo's stuff if ~teemo is typed
+    if (commandIs(comms[0], message)) {
+        message.channel.sendFile('media/teemoShroom.gif');
+        if (channel != null) {
+            channel.join()
+                .then(connection => {
+                    const dispatcher = connection.playFile('media/astroTeemo.mp3');
+                }).catch(console.error);
+        }
+        else {
+            //message.reply("Please join a voice channel!");
+        }
+    }
 
 });
 

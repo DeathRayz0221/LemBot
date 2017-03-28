@@ -1,7 +1,7 @@
 {
   "name": "discord-lem-bot",
   "version": "1.0.0",
-  "description": "",
+  "description": "type ~help for info",
   "main": "app.js",
   "scripts": {
       "test": "lem bot.js"
