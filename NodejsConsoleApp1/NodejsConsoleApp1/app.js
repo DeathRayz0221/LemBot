@@ -7,7 +7,7 @@ loga = "Mjk1NzUwNzIzMTE3OTA3OTY4";
 logb = ".C7oW3Q";
 logc = ".zNvmGRRMkK6WffH2VyAdAFTwenU";
 
-var comms = ["teemo", "fuck", "roll", "lmgtfy"];
+
 
 //Insert functions here 
 function commandIs(str, msg) {
@@ -33,8 +33,11 @@ client.on('ready', e => {
 });
 
 //Bot commands
+var comms = ["teemo", "fuck", "roll", "lmgtfy","join","leave"];
+
 client.on('message', message => {
     var args = message.content.split(" ")
+    const channel = message.member.voiceChannel;
     if (commandIs("help", message)) {
         message.author.sendMessage("Please refer to https://github.com/DeathRayz0221/LemBot for help");
     }
@@ -69,6 +72,13 @@ client.on('message', message => {
             message.reply(newString);
         }
     }
+    if (commandIs(comms[4], message)) {
+        channel.join();
+    }
+    if (commandIs(comms[5], message)) {
+        channel.leave();
+    }
+
 
 });
 
