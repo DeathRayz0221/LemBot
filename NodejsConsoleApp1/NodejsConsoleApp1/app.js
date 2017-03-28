@@ -33,6 +33,7 @@ client.on('ready', e => {
 
 //Bot commands
 client.on('message', message => {
+    var args = message.content.split(" ")
     if (commandIs("teemo", message)) {
         message.channel.sendMessage("Want shrooms, " + message.author.username + "?");
     }
@@ -42,5 +43,21 @@ client.on('message', message => {
     if (commandIs('roll', message)) {
         message.channel.sendMessage("!role");
     }
+    if (commandIs("lmgtfy", message)) {
+        if (args.length === 1) {
+            message.reply("Invalid entry. Add more words after ~lmgtfy ");
+        }
+        else {
+            var newString = "http://lmgtfy.com/?q=";
+            for (var i = 1; i < args.length; i++) {
+                newString += args[i];
+                if (i < args.length-1) {
+                    newString += "+";
+                }
+            }
+            message.reply(newString);
+        }
+    }
+
 });
 
