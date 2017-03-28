@@ -7,6 +7,7 @@ loga = "Mjk1NzUwNzIzMTE3OTA3OTY4";
 logb = ".C7oW3Q";
 logc = ".zNvmGRRMkK6WffH2VyAdAFTwenU";
 
+var comms = ["teemo", "fuck", "roll", "lmgtfy"];
 
 //Insert functions here 
 function commandIs(str, msg) {
@@ -34,18 +35,28 @@ client.on('ready', e => {
 //Bot commands
 client.on('message', message => {
     var args = message.content.split(" ")
-    if (commandIs("teemo", message)) {
+    if (commandIs("help", message)) {
+        message.author.sendMessage("Please refer to https://github.com/DeathRayz0221/LemBot for help");
+    }
+    if (commandIs("commands", message)) {
+        var result = "The commands are: \n";
+        for (var i = 0; i < comms.length; i++) {
+            result += "~" + comms[i] + "\n";
+        }
+        message.channel.sendMessage(result);
+    }
+    if (commandIs(comms[0], message)) {
         message.channel.sendMessage("Want shrooms, " + message.author.username + "?");
     }
-    if (commandIs('fuck',message)) {
+    if (commandIs(comms[1],message)) {
         message.channel.sendMessage("Dear " + message.author.username + '\n Fuck you in the ass :)');
     }
-    if (commandIs('roll', message)) {
+    if (commandIs(comms[2], message)) {
         message.channel.sendMessage("!role");
     }
-    if (commandIs("lmgtfy", message)) {
+    if (commandIs(comms[3], message)) {
         if (args.length === 1) {
-            message.reply("Invalid entry. Add more words after ~lmgtfy ");
+            message.reply("LMGTFY. Add more words after ~lmgtfy for me to \"google\" it for you");
         }
         else {
             var newString = "http://lmgtfy.com/?q=";

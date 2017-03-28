@@ -2,9 +2,12 @@
 
 Refer to the Lembot-git text channel for changes
 
-There are currently 3 commands for LemBot
+There are currently 5 commands for LemBot
   - ~teemo
   - ~fuck
   - ~roll
+  - ~help
+  - ~lmgtfy 
+  -	~commands
   
 Any questions must be addressed to me (LemDaKilla)
