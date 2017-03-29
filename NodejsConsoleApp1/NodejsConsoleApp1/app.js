@@ -106,5 +106,47 @@ client.on('message', message => {
         }
     }
 
+    //Play youtube audio
+    if (commandIs(comms[6], message)) {
+        message.delete();
+        if (args.length != 2 || !args[1].includes(".com")) {
+            message.reply("Please enter the right format to play a youtube audio. For example: \n" +
+                "~play https://www.youtube.com/watch?v=dQw4w9WgXcQ args=" + args.length);
+            console.log(args[1].includes("www.youtube.com"));
+
+        }
+        else {
+            const ytdl = require('ytdl-core');
+            const streamOptions = { seek: 0, volume: 1 };
+            const yt = require('youtube-node');
+
+            var youTube = new yt();
+            youTube.setKey('AIzaSyB1OOSpTREs85WUMvIgJvLTZKye4BVsoFU');
+            
+            var ytId = args[1].split("=")[1];
+            console.log(ytId);
+
+            //Get youtube title
+            /*
+            youTube.getById(ytId, function(error, result) {
+                if (error) {
+                    console.log("error!");
+                }
+                else {
+                    console.log(result);
+                }
+            });
+            */
+
+            
+            if (channel != null) {
+                channel.join()
+                    .then(connection => {
+                        const stream = ytdl(args[1], { filter: 'audioonly' });
+                        const dispatcher = connection.playStream(stream);
+                    }).catch(console.error);
+            }
+        }
+    }
 });
 

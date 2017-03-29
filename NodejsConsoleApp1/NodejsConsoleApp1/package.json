@@ -4,13 +4,15 @@
   "description": "type ~help for info",
   "main": "app.js",
   "scripts": {
-      "test": "lem bot.js"
+    "test": "lem bot.js"
   },
   "author": {
     "name": "Edison Guillermo"
   },
   "license": "Ed Corp",
   "dependencies": {
-    "discordie": "^0.5.5"
+    "discord.js": "^11.0.0",
+    "discordie": "^0.5.5",
+    "opusscript": "0.0.3"
   }
 }
