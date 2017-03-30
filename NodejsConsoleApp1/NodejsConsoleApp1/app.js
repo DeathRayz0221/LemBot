@@ -160,9 +160,10 @@ client.on('message', message => {
                 }
             });
             
-
+            const channel = message.member.voiceChannel;
             
             if (channel != null) {
+                const channel = message.member.voiceChannel;
                 channel.join()
                     .then(connection => {
                         const stream = ytdl(args[1], { filter: 'audioonly' });
