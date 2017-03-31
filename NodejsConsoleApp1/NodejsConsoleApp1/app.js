@@ -3,6 +3,11 @@ var Discord = require('discord.js');
 
 const Events = Discord.Events;
 const client = new Discord.Client();
+
+const ytdl = require('ytdl-core');
+const streamOptions = { seek: 0, volume: 1 };
+const yt = require('youtube-node');
+
 loga = "Mjk1NzUwNzIzMTE3OTA3OTY4";
 logb = ".C7oW3Q";
 logc = ".zNvmGRRMkK6WffH2VyAdAFTwenU";
@@ -27,6 +32,17 @@ function hasRole(mem, role) {
         return false;
     }
 }
+
+//Youtube commands
+/*
+function getTitle{
+
+}
+function searchByKeyword(queue) {
+    
+}
+*/
+
 //Console
 client.on('ready', e => {
     console.log('Connected :)');
@@ -79,9 +95,11 @@ client.on('message', message => {
     }
 
     //Music
-    const channel = message.member.voiceChannel;
+    
     if (commandIs(comms[4], message)) {
+        const channel = message.member.voiceChannel;
         if (channel != null) {
+            
             channel.join().then(connection => console.log("Connected to voice!"));
         }
         else {
@@ -89,13 +107,16 @@ client.on('message', message => {
         }
     }
     if (commandIs(comms[5], message)) {
+        const channel = message.member.voiceChannel;
         channel.leave();
     }
 
     //Play Teemo's stuff if ~teemo is typed
     if (commandIs(comms[0], message)) {
         message.channel.sendFile('media/teemoShroom.gif');
+        const channel = message.member.voiceChannel;
         if (channel != null) {
+            
             channel.join()
                 .then(connection => {
                     const dispatcher = connection.playFile('media/astroTeemo.mp3');
@@ -109,34 +130,36 @@ client.on('message', message => {
     //Play youtube audio
     if (commandIs(comms[6], message)) {
         message.delete();
-        if (args.length != 2 || !args[1].includes(".com")) {
+        if (args.length != 2 || !args[1].includes("youtube.com")) {
             message.reply("Please enter the right format to play a youtube audio. For example: \n" +
                 "~play https://www.youtube.com/watch?v=dQw4w9WgXcQ args=" + args.length);
             console.log(args[1].includes("www.youtube.com"));
 
         }
-        else {
-            const ytdl = require('ytdl-core');
-            const streamOptions = { seek: 0, volume: 1 };
-            const yt = require('youtube-node');
+        else if (args.length > 1) {
+            
 
             var youTube = new yt();
-            youTube.setKey('AIzaSyB1OOSpTREs85WUMvIgJvLTZKye4BVsoFU');
+            youTube.setKey('AIzaSyCkOS3SQrgg9Lko4eUuIgLAPH2MxRAn3Pw');
             
             var ytId = args[1].split("=")[1];
-            console.log(ytId);
+            //console.log(ytId);
 
             //Get youtube title
-            /*
+            
             youTube.getById(ytId, function(error, result) {
                 if (error) {
                     console.log("error!");
                 }
                 else {
-                    console.log(result);
+                    vidInfo = result.items[0].snippet
+                    console.log(vidInfo);
+                    vidTitle = vidInfo.title;
+                    message.channel.sendMessage("Now playing: " + vidTitle);
+                    
                 }
             });
-            */
+            
 
             
             if (channel != null) {
