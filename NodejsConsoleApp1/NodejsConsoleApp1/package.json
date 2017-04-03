@@ -12,7 +12,6 @@
   "license": "Ed Corp",
   "dependencies": {
     "discord.js": "^11.0.0",
-    "discordie": "^0.5.5",
     "opusscript": "0.0.3"
   }
 }

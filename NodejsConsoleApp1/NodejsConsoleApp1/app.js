@@ -3,15 +3,22 @@ var Discord = require('discord.js');
 
 const Events = Discord.Events;
 const client = new Discord.Client();
+//const guild = client.guilds.
+var squad = '236673341325312011';
 
 const ytdl = require('ytdl-core');
 const streamOptions = { seek: 0, volume: 1 };
 const yt = require('youtube-node');
 
 loga = "Mjk1NzUwNzIzMTE3OTA3OTY4";
-logb = ".C7oW3Q";
-logc = ".zNvmGRRMkK6WffH2VyAdAFTwenU";
+logb = ".C8MQvA";
+logc = ".wKT5hzDrzU723zFdb24y4XAn3yo";
 
+//emojis
+const eggplant = '\uD83C\uDF46';
+const cookie = '\uD83C\uDF6A';
+var arjess;
+//var arjess = '\<:arjess2:277932927055036417>';
 
 
 //Insert functions here 
@@ -33,6 +40,7 @@ function hasRole(mem, role) {
     }
 }
 
+
 //Youtube commands
 /*
 function getTitle{
@@ -46,14 +54,30 @@ function searchByKeyword(queue) {
 //Console
 client.on('ready', e => {
     console.log('Connected :)');
-    client.user.setGame("Type ~help for info")
+    client.user.setGame("Type ~help for info");
+    var channel = client.channels.find('name', 'squad_squad_and_chill');
+    if (channel != null) {
+       // channel.sendMessage("Hello @everyone there is a hidden command and you get a cookie if you are able to find it. " +
+       //    "The cookie will be provided by LemDaKilla. Happy hunting :)!!");
+    }
+    console.log("");
+
+
+    
+
+
 });
+
+
 
 //Bot commands
 var comms = ["teemo", "fuck", "roll", "lmgtfy","join","leave","play"];
 
 client.on('message', message => {
     var args = message.content.split(" ")
+
+    //channel emojis
+    var arjess = client.emojis.find('name', 'arjess2');
     
     if (commandIs("help", message)) {
         message.author.sendMessage("Please refer to https://github.com/DeathRayz0221/LemBot for help");
@@ -172,5 +196,22 @@ client.on('message', message => {
             }
         }
     }
+
+
+    //arjess XD
+    if (message.author.id == '148674269193306113') {
+        message.react(eggplant);
+        if (arjess != null) {
+            message.react(arjess);
+        }
+        
+    }
+    if (message.author.id == '106441089921069056' || message.author.id == '105910855262064640') {
+        
+        message.react(cookie);
+
+    }
+    
 });
+process.on('unhandledRejection', console.error)
 
